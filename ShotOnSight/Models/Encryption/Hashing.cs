@@ -1,4 +1,4 @@
-﻿namespace Image.Models.Encryption
+﻿namespace ShotOnSight.Models.Encryption
 {
     public class Hashing
     {

@@ -50,17 +50,8 @@ namespace ShotOnSight.Models.Entities
         public string Username { get; set; }
         [Display(Name = "Photographer Category")]
         public long? PhotographerCategoryId { get; set; }
-        [ForeignKey("PhotographerCategoryId")]
-        public PhotographerCategory PhotographerCategory { get; set; }
-        public IEnumerable<Image> Images { get; set; }
         public IEnumerable<Cart> Carts { get; set; }
         public IEnumerable<Order> Orders { get; set; }
-        public IEnumerable<BillingAddress>BillingAddresses { get; set; }
-        public IEnumerable<ShippingAddress> ShippingAddresses { get; set; }
-        public IEnumerable<UserSubscription> UserSubscriptions { get; set; }
-        public IEnumerable<Competition> Competitions { get; set; }
-        public IEnumerable<CompetitionVote> CompetitionVotes { get; set; }
-        public IEnumerable<ImageComment> ImageComments { get; set; }
         public IEnumerable<SystemNotification> SystemNotifications { get; set; }
     }
 }

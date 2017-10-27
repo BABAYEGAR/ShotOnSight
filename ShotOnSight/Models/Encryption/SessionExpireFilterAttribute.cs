@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 
-namespace Image.Models.Encryption
+namespace ShotOnSight.Models.Encryption
 {
     public class SessionExpireFilterAttribute : ActionFilterAttribute
     {

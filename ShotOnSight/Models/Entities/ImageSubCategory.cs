@@ -9,7 +9,5 @@ namespace ShotOnSight.Models.Entities
         [Required]
         public string Name { get; set; }
         public long? ImageCategoryId { get; set; }
-        [ForeignKey("ImageCategoryId")]
-        public ImageCategory ImageCategory { get; set; }
     }
 }

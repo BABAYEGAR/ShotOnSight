@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Image.Models.Encryption
+namespace ShotOnSight.Models.Encryption
 {
     public class Md5Ecryption
     {

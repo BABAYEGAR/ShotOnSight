@@ -3,7 +3,7 @@ using ShotOnSight.Models.Entities;
 
 namespace ShotOnSight.Models.DataBaseConnections
 {
-    public class ImageDataContext : DbContext
+    public class ShotOnSightDataContext : DbContext
     {
         // Your context has been configured to use a 'VmsDataContext' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -11,7 +11,7 @@ namespace ShotOnSight.Models.DataBaseConnections
         // 
         // If you wish to target a different database and/or database provider, modify the 'ImageDataContext' 
         // connection string in the application configuration file.
-        public ImageDataContext(DbContextOptions<ImageDataContext> options)
+        public ShotOnSightDataContext(DbContextOptions<ShotOnSightDataContext> options)
             : base(options)
         {
 
@@ -21,13 +21,10 @@ namespace ShotOnSight.Models.DataBaseConnections
         public virtual DbSet<AppUser> AppUsers { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<ImageTag> ImageTags { get; set; }
-        public virtual DbSet<ImageClick> ImageClicks { get; set; }
-        public virtual DbSet<ImageRating> ImageRatings { get; set; }
         public virtual DbSet<ImageComment> ImageComments { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
-        public virtual DbSet<UserSubscription> UserSubscriptions { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

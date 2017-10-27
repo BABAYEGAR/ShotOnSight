@@ -8,7 +8,5 @@ namespace ShotOnSight.Models.Entities
         public long ImageCategoryId { get; set; }
         [Required]
         public string Name { get; set; }
-        public IEnumerable<Image> Images { get; set; }
-        public IEnumerable<ImageSubCategory> ImageSubCategories { get; set; }
     }
 }

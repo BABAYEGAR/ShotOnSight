@@ -8,6 +8,5 @@ namespace ShotOnSight.Models.Entities
         public long PhotographerCategoryId { get; set; }
         [Required]
         public string Name { get; set; }
-        public IEnumerable<AppUser> AppUsers { get; set; }
     }
 }

@@ -8,6 +8,5 @@ namespace ShotOnSight.Models.Entities
         public long LocationId { get; set; }
         [Required]
         public string Name { get; set; }
-        public IEnumerable<Image> Images { get; set; }
     }
 }

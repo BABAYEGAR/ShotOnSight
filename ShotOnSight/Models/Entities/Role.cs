@@ -34,6 +34,5 @@ namespace ShotOnSight.Models.Entities
         [DisplayName("Manage Locations")]
         public bool ManageLocations { get; set; }
         public IEnumerable<AppUser> AppUsers { get; set; }
-        public IEnumerable<UserSubscription> UserSubscriptions { get; set; }
     }
 }
