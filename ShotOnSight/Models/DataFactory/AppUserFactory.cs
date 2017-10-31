@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using ShotOnSight.Models.DataPool;
+using Newtonsoft.Json;
 using ShotOnSight.Models.Entities;
+
 
 namespace ShotOnSight.Models.DataFactory
 {
@@ -22,7 +23,7 @@ namespace ShotOnSight.Models.DataFactory
                     if (httpResponse.IsSuccessStatusCode)
                     {
                         var stringData = httpResponse.Content.ReadAsStringAsync().Result;
-                        users = await new AppUserData().FetchAllUsersAsync(stringData);
+                        users = await Task.Run(() => JsonConvert.DeserializeObject<List<AppUser>>(stringData));
                     }
             }
             return users;

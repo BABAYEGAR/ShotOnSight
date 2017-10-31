@@ -26,7 +26,7 @@ namespace ShotOnSight.Models.Entities
         public Location Location { get; set; }
         [Display(Name = "Selling Price")]
         [Required]
-        public long SellingPrice { get; set; }
+        public long? SellingPrice { get; set; }
         public string Inspiration { get; set; }
         [Display(Name = "Sub-Category/Sub-Genre")]
         public long? ImageSubCategoryId { get; set; }
@@ -38,11 +38,11 @@ namespace ShotOnSight.Models.Entities
         [ForeignKey("ImageCategoryId")]
         public ImageCategory ImageCategory { get; set; }
         public long? AppUserId { get; set; }
-        [ForeignKey("AppUserId")]
-        public AppUser AppUser { get; set; }
+        public string Status { get; set; }
         public long? Like { get; set; }
         public long? DisLike { get; set; }
-        public string Status { get; set; }
+
+        public string Tags { get; set; }
         public IEnumerable<ImageTag> ImageTags { get; set; }
         public IEnumerable<ImageComment> ImageComments { get; set; }
     }

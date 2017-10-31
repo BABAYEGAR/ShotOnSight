@@ -9,6 +9,8 @@ namespace ShotOnSight.Models.Entities
         [Required]
         public string Name { get; set; }
         public long ImageId { get; set; }
+        [ForeignKey("ImageId")]
+        public Image Image { get; set; }
 
     }
 }

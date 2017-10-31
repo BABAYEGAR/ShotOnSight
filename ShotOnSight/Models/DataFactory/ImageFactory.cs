@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using ShotOnSight.Models.DataPool;
+using Newtonsoft.Json;
 using ShotOnSight.Models.Entities;
 
 namespace ShotOnSight.Models.DataFactory
 {
     public class ImageFactory
     {
-        public async Task<IEnumerable<Image>> GetAllImagesAsync(string imageBaseAddress,
-            string categoryBaseAddress, string subCategoryBaseAddress, string locationBaseAddress, string cameraBaseAddress)
+        public async Task<IEnumerable<Image>> GetAllImagesAsync(string imageBaseAddress)
         {
             if (imageBaseAddress == null) throw new ArgumentNullException(nameof(imageBaseAddress));
             IEnumerable<Image> images = new List<Image>();
@@ -22,34 +21,10 @@ namespace ShotOnSight.Models.DataFactory
                     if (httpResponse.IsSuccessStatusCode)
                     {
                         var stringData = httpResponse.Content.ReadAsStringAsync().Result;
-                        images = await new ImageData().DeSerializeMultipleImagesData(stringData,
-                            categoryBaseAddress);
+                        images = await Task.Run(() => JsonConvert.DeserializeObject<List<Image>>(stringData));
                     }
             }
             return images;
         }
-
-        public async Task<Image> GetImageAsync(string baseAddress, string categoryBaseAddress, long? productId)
-        {
-            if (baseAddress == null) throw new ArgumentNullException(nameof(baseAddress));
-            var image = new Image();
-            baseAddress = baseAddress + productId;
-            using (var httpClient = new HttpClient())
-            {
-                // Do the actual request and await the response
-                var httpResponse = await httpClient.GetAsync(baseAddress);
-                if (httpResponse != null)
-                    if (httpResponse.IsSuccessStatusCode)
-                    {
-                        var stringData = httpResponse.Content.ReadAsStringAsync().Result;
-                        //get particular product
-                        image = await new ImageData()
-                            .DeSerializeSingleImageData(stringData, categoryBaseAddress);
-                    }
-            }
-            return image;
-        }
-
-
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShotOnSight.Models.Entities
 {
@@ -7,6 +9,8 @@ namespace ShotOnSight.Models.Entities
         public long CompetitionUploadId { get; set; }
         public long? AppUserId { get; set; }
         public long CompetitionId { get; set; }
+        [ForeignKey("CompetitionId")]
+        public Competition Competition { get; set; }
         public string FilePath { get; set; }
         public string FileName { get; set; }
         public string Title { get; set; }
@@ -14,10 +18,14 @@ namespace ShotOnSight.Models.Entities
         public string Description { get; set; }
         [Display(Name = "Camera")]
         public long? CameraId { get; set; }
+        [ForeignKey("CameraId")]
+        public Camera Camera { get; set; }
         [Display(Name = "Location")]
         public long? LocationId { get; set; }
-        public long? Like { get; set; }
-        public long? DisLike { get; set; }
+        [ForeignKey("LocationId")]
+        public Location Location { get; set; }
+        public long Vote { get; set; }
+        public IEnumerable<ImageCompetitionRating> ImageCompetitionRatings { get; set; }
 
     }
 }

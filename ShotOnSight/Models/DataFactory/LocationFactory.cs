@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using ShotOnSight.Models.DataPool;
+using Newtonsoft.Json;
 using ShotOnSight.Models.Entities;
 
 namespace ShotOnSight.Models.DataFactory
@@ -23,31 +23,11 @@ namespace ShotOnSight.Models.DataFactory
                     if (httpResponse.IsSuccessStatusCode)
                     {
                         var stringData = httpResponse.Content.ReadAsStringAsync().Result;
-                        locations = await new LocationData().DeSerializeMultipleImageLocationData(stringData);
+                        locations = await Task.Run(() => JsonConvert.DeserializeObject<List<Location>>(stringData));
 
                     }
             }
             return locations;
-        }
-
-        public async Task<Location> GetImageLocationAsync(string baseAddress, long? locationId)
-        {
-            if (baseAddress == null) throw new ArgumentNullException(nameof(baseAddress));
-            var location = new Location();
-            baseAddress = baseAddress + locationId;
-            using (var httpClient = new HttpClient())
-            {
-                // Do the actual request and await the response
-                var httpResponse = await httpClient.GetAsync(baseAddress);
-                if (httpResponse != null)
-                    if (httpResponse.IsSuccessStatusCode)
-                    {
-                        var stringData = httpResponse.Content.ReadAsStringAsync().Result;
-                        location = await new LocationData().DeSerializeSingleLocationData(stringData);
-                        ;
-                    }
-            }
-            return location;
         }
     }
 }

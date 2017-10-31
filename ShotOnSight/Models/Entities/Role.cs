@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ShotOnSight.Models.Entities
@@ -17,10 +16,14 @@ namespace ShotOnSight.Models.Entities
         public bool UploadImage { get; set; }
         [DisplayName("Manage Competitions")]
         public bool ManageCompetition { get; set; }
+        [DisplayName("Participate In Competitions")]
+        public bool ParticipateCompetition { get; set; }
         [DisplayName("Manage Subscription Pacakges")]
         public bool ManagePackages { get; set; }
         [DisplayName("Purchase Images")]
         public bool PurchaseImage { get; set; }
+        [DisplayName("Manage Images")]
+        public bool ManageImages { get; set; }
         [DisplayName("Manage Image Categories")]
         public bool ManageImageCategory { get; set; }
         [DisplayName("Manage Photographer Categories")]
@@ -33,6 +36,5 @@ namespace ShotOnSight.Models.Entities
         public bool ManagePayments { get; set; }
         [DisplayName("Manage Locations")]
         public bool ManageLocations { get; set; }
-        public IEnumerable<AppUser> AppUsers { get; set; }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace ShotOnSight.Models.Entities
+﻿namespace ShotOnSight.Models.Entities
 {
     public class CompetitionVote : Transport
     {
@@ -8,7 +6,5 @@ namespace ShotOnSight.Models.Entities
         public long Votes { get; set; }
         //user
         public long? AppUserId { get; set; }
-        [ForeignKey("AppUserId")]
-        public AppUser AppUser { get; set; }
     }
 }

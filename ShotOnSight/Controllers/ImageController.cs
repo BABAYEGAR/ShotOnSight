@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ShotOnSight.Models.DataFactory;
 
 namespace ShotOnSight.Controllers
 {
@@ -8,7 +9,8 @@ namespace ShotOnSight.Controllers
         // GET: Image
         public ActionResult Index()
         {
-            return View();
+            var images = new ImageFactory().GetAllImagesAsync("http://localhost:63274/API/GetAllImages");
+            return Json(images);
         }
         // GET: Image/Details/5
         public ActionResult Details(int id)

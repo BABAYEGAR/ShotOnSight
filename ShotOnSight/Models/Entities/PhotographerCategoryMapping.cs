@@ -2,12 +2,10 @@
 
 namespace ShotOnSight.Models.Entities
 {
-    public class CompetitionCategory : Transport
+    public class PhotographerCategoryMapping : Transport
     {
-        public long CompetitionCategoryId { get; set; }
-        public long CompetitionId { get;set; }
-        [ForeignKey("CompetitionId")]
-        public Competition Competition { get; set; }
+        public long PhotographerCategoryMappingId { get; set; }
+        public long AppUserId { get;set; }
         public long PhotographerCategoryId { get; set; }
         [ForeignKey("PhotographerCategoryId")]
         public PhotographerCategory PhotographerCategory { get; set; }
